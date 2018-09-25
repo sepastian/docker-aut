@@ -4,11 +4,11 @@ FROM maven:3-jdk-8-alpine
 # Metadata
 LABEL maintainer="Nick Ruest <ruestn@gmail.com>"
 LABEL description="Docker image for the Archives Unleashed Toolkit."
-LABEL website="http://archivesunleashed.org/"
+LABEL website="https://archivesunleashed.org/"
 
 ## Build variables
 #########################
-ARG SPARK_VERSION=2.1.1
+ARG SPARK_VERSION=2.1.3
 
 # Git and Wget
 RUN apk add --update \
