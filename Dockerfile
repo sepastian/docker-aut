@@ -1,5 +1,5 @@
 # Base Alpine Linux based image with OpenJDK and Maven
-FROM maven:3-jdk-8-alpine
+FROM maven:3-jdk-11
 
 # Metadata
 LABEL maintainer="Nick Ruest <ruestn@gmail.com>"
@@ -8,18 +8,13 @@ LABEL website="http://archivesunleashed.org/"
 
 ## Build variables
 #######################
-ARG SPARK_VERSION=2.4.3
-
-# Git and Wget
-RUN apk add --update \
-    git \
-    wget
+ARG SPARK_VERSION=3.0.0-preview
 
 # Sample resources
 RUN git clone https://github.com/archivesunleashed/aut-resources.git
 
 # Archives Unleashed Toolkit
-RUN git clone https://github.com/archivesunleashed/aut.git /aut \
+RUN git clone -b issue-356 https://github.com/archivesunleashed/aut.git /aut \
     && cd /aut \
     && export JAVA_OPTS=-Xmx512m \
     && mvn clean install
